@@ -23,6 +23,16 @@ public class Frase {
     @Column(name = "categoria_id", nullable = false)
     private int categoriaId;
 
+    public Frase(String texto, Date fechaprogramada, int autorId, int categoriaId) {
+        this.texto = texto;
+        this.fechaprogramada = fechaprogramada;
+        this.autorId = autorId;
+        this.categoriaId = categoriaId;
+    }
+
+    public Frase() {
+    }
+
     public int getId() {
         return id;
     }
@@ -88,5 +98,16 @@ public class Frase {
         result = 31 * result + autorId;
         result = 31 * result + categoriaId;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Frase{" +
+                "id=" + id +
+                ", texto='" + texto + '\'' +
+                ", fechaprogramada=" + fechaprogramada +
+                ", autorId=" + autorId +
+                ", categoriaId=" + categoriaId +
+                '}';
     }
 }

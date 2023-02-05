@@ -1,7 +1,7 @@
-package com.daniminguet.frasescelebresdaniminguet.db;
+package com.cristobalbernal.frasescelebrescristobal.db;
 
-import com.daniminguet.frasescelebresdaniminguet.FrasesCelebresDaniMinguetApplication;
-import com.daniminguet.frasescelebresdaniminguet.util.Log;
+import com.cristobalbernal.frasescelebrescristobal.FrasesCelebresCristobalApplication;
+import com.cristobalbernal.frasescelebrescristobal.util.Log;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class DbConnection {
     private final static String TAG = "DbConnection";
     private static DbConnection instance = null;
     private String DB_SERVER = "localhost:3306";
-    private String DB_NAME = "frasescelebres";
+    private String DB_NAME = "german";
     private String DB_USERNAME = "root";
     private String DB_PASSWORD = "";
     public Connection connection;
@@ -40,8 +40,8 @@ public class DbConnection {
     public synchronized static DbConnection getInstance() {
         if(instance == null) {
             instance = new DbConnection();
-            if(FrasesCelebresDaniMinguetApplication.CONFIG_FILE != null) {
-                instance.readConfig(FrasesCelebresDaniMinguetApplication.CONFIG_FILE);
+            if(FrasesCelebresCristobalApplication.CONFIG_FILE != null) {
+                instance.readConfig(FrasesCelebresCristobalApplication.CONFIG_FILE);
             }
             instance.connect();
         }
@@ -87,7 +87,7 @@ public class DbConnection {
             in = new FileInputStream(filename);
             prop.load(in);
             DB_SERVER = prop.getProperty("DB_SERVER", "locahost:3306");
-            DB_NAME = prop.getProperty("DB_NAME", "frasescelebres");
+            DB_NAME = prop.getProperty("DB_NAME", "german");
             DB_USERNAME = prop.getProperty("DB_USERNAME", "root");
             DB_PASSWORD = prop.getProperty("DB_PASSWORD", "");
         } catch (FileNotFoundException e) {

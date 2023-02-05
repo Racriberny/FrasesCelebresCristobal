@@ -18,6 +18,9 @@ public class Usuario {
     @Column(name = "admin", nullable = true)
     private Byte admin;
 
+    public Usuario() {
+    }
+
     public int getId() {
         return id;
     }
@@ -48,6 +51,11 @@ public class Usuario {
 
     public void setAdmin(Byte admin) {
         this.admin = admin;
+    }
+
+    public Usuario(String nombre, String contrasenya) {
+        this.nombre = nombre;
+        this.contrasenya = contrasenya;
     }
 
     @Override

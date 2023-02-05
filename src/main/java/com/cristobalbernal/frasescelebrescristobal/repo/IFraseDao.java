@@ -1,6 +1,7 @@
-package com.daniminguet.frasescelebresdaniminguet.repo;
+package com.cristobalbernal.frasescelebrescristobal.repo;
 
-import com.daniminguet.frasescelebresdaniminguet.models.Frase;
+import com.cristobalbernal.frasescelebrescristobal.models.Frase;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

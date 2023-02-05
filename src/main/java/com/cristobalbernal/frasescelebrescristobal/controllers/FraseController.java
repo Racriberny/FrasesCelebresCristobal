@@ -1,11 +1,11 @@
-package com.daniminguet.frasescelebresdaniminguet.controllers;
+package com.cristobalbernal.frasescelebrescristobal.controllers;
 
-import com.daniminguet.frasescelebresdaniminguet.models.Categoria;
-import com.daniminguet.frasescelebresdaniminguet.models.Frase;
-import com.daniminguet.frasescelebresdaniminguet.repo.IAutorDao;
-import com.daniminguet.frasescelebresdaniminguet.repo.ICategoriaDao;
-import com.daniminguet.frasescelebresdaniminguet.repo.IFraseDao;
-import com.daniminguet.frasescelebresdaniminguet.util.Log;
+import com.cristobalbernal.frasescelebrescristobal.models.Categoria;
+import com.cristobalbernal.frasescelebrescristobal.models.Frase;
+import com.cristobalbernal.frasescelebrescristobal.repo.IAutorDao;
+import com.cristobalbernal.frasescelebrescristobal.repo.ICategoriaDao;
+import com.cristobalbernal.frasescelebrescristobal.repo.IFraseDao;
+import com.cristobalbernal.frasescelebrescristobal.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,7 @@ public class FraseController {
     @Autowired
     private ICategoriaDao repoCategoria;
 
-    @GetMapping("/all/")
+    @GetMapping("/all")
     public List<Frase> getFrases() {
         return repo.findAll();
     }

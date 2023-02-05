@@ -1,9 +1,9 @@
-package com.daniminguet.frasescelebresdaniminguet.util;
+package com.cristobalbernal.frasescelebrescristobal.util;
+
+import com.cristobalbernal.frasescelebrescristobal.FrasesCelebresCristobalApplication;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.daniminguet.frasescelebresdaniminguet.FrasesCelebresDaniMinguetApplication;
 
 public class Log {
 
@@ -16,7 +16,7 @@ public class Log {
     }
 
     public static void d(String tag, String msg) {
-        if(FrasesCelebresDaniMinguetApplication.DEBUG) {
+        if(FrasesCelebresCristobalApplication.DEBUG) {
             Logger.getLogger(tag).log(Level.INFO, "DEBUG ["+tag+"] " + msg);
         }
     }
