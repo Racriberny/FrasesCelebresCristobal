@@ -2,10 +2,12 @@ package com.cristobalbernal.frasescelebrescristobal.controllers;
 
 import com.cristobalbernal.frasescelebrescristobal.models.Usuario;
 import com.cristobalbernal.frasescelebrescristobal.repo.IUsuariosDao;
+import com.cristobalbernal.frasescelebrescristobal.util.HashGenerator;
 import com.cristobalbernal.frasescelebrescristobal.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,9 +30,22 @@ public class UsuarioController {
     public Optional<Usuario> getUser(@PathVariable("id") Integer id) {
         return repo.findById(id);
     }
-
     @PostMapping("/add")
     public boolean addUser(@RequestBody Usuario usuario) {
+        for (Usuario user: repo.findAll()) {
+            if (user.getNombre().equals(usuario.getNombre())){
+                return false;
+            }
+        }
+
+        String contrasena = "";
+        try{
+            contrasena = HashGenerator.getSHAString(usuario.getContrasenya());
+        }catch (NoSuchFieldError | NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+        usuario.setContrasenya(contrasena);
+        usuario.setAdmin((byte) 0);
         try {
             Log.i("Nuevo Usuario: ", usuario.toString());
             repo.save(usuario);
@@ -66,9 +81,10 @@ public class UsuarioController {
     }
     @PostMapping("/login")
     public boolean login(@RequestBody Usuario user) {
+
         try {
             for (Usuario usuario: getUsers()) {
-                if (usuario.getNombre().equals(user.getNombre()) && usuario.getContrasenya().equals(user.getContrasenya())) {
+                if (usuario.getNombre().equals(user.getNombre()) && (user.getContrasenya()).equals(usuario.getContrasenya())) {
                     return true;
                 }
             }
